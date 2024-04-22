@@ -4,6 +4,7 @@ export async function up(knex) {
     table.string('name')
     table.string('image')
     table.string('ingredients')
+    table.string('url')
   })
 }
 

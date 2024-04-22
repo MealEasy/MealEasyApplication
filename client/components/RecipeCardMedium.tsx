@@ -51,6 +51,7 @@ export default function RecipeCardMedium() {
         obj.name = item.recipe.label
         obj.image = item.recipe.images
         obj.ingredients = item.recipe.ingredientLines
+        obj.url = item.recipe.url
         return obj
       })
       // Use setMeals to trigger a re-render with the updated value
@@ -103,11 +104,11 @@ export default function RecipeCardMedium() {
         const arr = await getRecipeByName(meal.name)
 
         if (arr.length === 0) {
-          const obj: Recipes = { name: '', ingredients: '', image: '' }
+          const obj: Recipes = { name: '', ingredients: '', image: '', url: '' }
           obj.name = meal.name
           obj.image = meal.image.LARGE.url
           obj.ingredients = meal.ingredients.join('_')
-          console.log(obj)
+          obj.url = meal.url
           await addARecipe(obj)
         }
       }),
@@ -117,6 +118,7 @@ export default function RecipeCardMedium() {
     await Promise.all(
       mealsArr.map(async (meal, i) => {
         const arr = await getRecipeByName(meal.name)
+        console.log(arr)
         const id = arr[0].id
         weekObj[week[i]] = id
       }),
@@ -182,7 +184,10 @@ export default function RecipeCardMedium() {
           <label className=" mb-5 flex items-center gap-2">
             <input
               onChange={handleChange}
+
+
               onKeyDown={handleKeyPress}
+
               className="mt-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-buttonGreen focus:outline-none"
               placeholder="Search"
               value={input}

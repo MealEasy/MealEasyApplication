@@ -221,13 +221,19 @@ export default function WeekPlan() {
         <div className="ml-40 mt-12">
           {selectedRecipeIndex !== null &&
             recipes[selectedRecipeIndex] !== null && (
-              <RecipeDetail
-                imageUrl={recipes[selectedRecipeIndex]?.image}
-                recipeName={recipes[selectedRecipeIndex]?.name}
-                ingredients={recipes[selectedRecipeIndex]?.ingredients.split(
-                  '_',
-                )}
-              />
+              // <RecipeDetail
+              //   imageUrl={recipes[selectedRecipeIndex]?.image}
+              //   recipeName={recipes[selectedRecipeIndex]?.name}
+              //   ingredients={recipes[selectedRecipeIndex]?.ingredients.split(
+              //     '_',
+              //   )}
+              // />
+              <iframe
+                title="recipe-window"
+                width="700"
+                height="1000"
+                src={recipes[selectedRecipeIndex]?.url}
+              ></iframe>
             )}
         </div>
       </div>
