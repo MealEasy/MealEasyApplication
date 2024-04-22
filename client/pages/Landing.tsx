@@ -18,7 +18,7 @@ function Landing() {
       </div> */}
       <div className=" mt-20 flex flex-col items-center justify-center sm:mt-40">
         <img
-          src="Public/images/blackLogo.png"
+          src="/images/blackLogo.png"
           alt="MealEasy Logo"
           className=" w-1/3 "
         />
@@ -28,17 +28,17 @@ function Landing() {
         </div>
         <div className="mt-20 flex flex-wrap justify-center sm:mt-24">
           <ImageTextSection
-            src="Public/images/recipebook.jpg"
+            src="/images/recipebook.jpg"
             alt="recipe book"
             text="All your recipes in one place!"
           />
           <ImageTextSection
-            src="Public/images/dinnertable.jpg"
+            src="/images/dinnertable.jpg"
             alt="dinner table"
             text="More time to relax with the family!"
           />
           <ImageTextSection
-            src="Public/images/shopping.jpg"
+            src="/images/shopping.jpg"
             alt="shopping"
             text="Shopping lists made easy!"
           />
