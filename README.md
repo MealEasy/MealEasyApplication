@@ -1,4 +1,6 @@
-## [wireframe](https://miro.com/app/board/uXjVNFoiRjA=/?share_link_id=974828280378)
+## [Deployed application](https://meal-easy.pushed.nz/)
+
+## [Wireframe](https://miro.com/app/board/uXjVNFoiRjA=/?share_link_id=974828280378)
 
 
 Sukh merge
