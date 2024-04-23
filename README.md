@@ -4,7 +4,8 @@
 
 ![logo](public/images/greenLogo.png)
 
-## [Deployed application](https://meal-easy.pushed.nz/)
+
+### [Deployed application](https://meal-easy.pushed.nz/)
 
 An application to help make meal planning easier!
 
