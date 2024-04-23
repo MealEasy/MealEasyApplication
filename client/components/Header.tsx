@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import LogoutButton from './Logout'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -6,6 +6,17 @@ import { useAuth0 } from '@auth0/auth0-react'
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const { logout } = useAuth0()
+
+  // Close dropdown when clicked outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (event.target.closest('.dropdown') === null) {
+        setIsDropdownOpen(false)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [])
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
@@ -44,11 +55,8 @@ export default function Header() {
           </button>
         </div>
         {isDropdownOpen && (
-          <ul
-            tabIndex={0}
-            className=" menu dropdown-content menu-lg absolute right-0 z-[2] mt-3 w-52 rounded-box bg-base-100 p-2 font-bold text-buttonGreen shadow"
-          >
-            <li className="hover:rounded-lg hover:bg-buttonGreen hover:text-white">
+          <ul className="menu dropdown-content menu-lg absolute right-0 z-[2] mt-3 w-52 rounded-box bg-base-100 p-2 font-bold text-buttonGreen shadow">
+            <li>
               <Link
                 to="/home/profile"
                 className="focus:bg-buttonGreen focus:text-white"
@@ -57,7 +65,7 @@ export default function Header() {
                 Profile
               </Link>
             </li>
-            <li className="hover:rounded-lg  hover:bg-buttonGreen hover:text-white ">
+            <li>
               <Link
                 to="/home/preferences"
                 className="focus:bg-buttonGreen focus:text-white"
@@ -66,7 +74,7 @@ export default function Header() {
                 Preferences
               </Link>
             </li>
-            <li className="hover:rounded-lg hover:bg-buttonGreen hover:text-white">
+            <li>
               <Link
                 to="/home/recipes"
                 className="focus:bg-buttonGreen focus:text-white"
@@ -75,7 +83,7 @@ export default function Header() {
                 Recipes
               </Link>
             </li>
-            <li className=" bg-lightGreen hover:rounded-lg hover:bg-buttonGreen hover:text-white">
+            <li>
               <Link
                 to="/home"
                 className="focus:bg-buttonGreen focus:text-white"
@@ -84,7 +92,7 @@ export default function Header() {
                 Week Plan
               </Link>
             </li>
-            <li className="hover:rounded-lg hover:bg-buttonGreen hover:text-white">
+            <li>
               <button onClick={handleLogout}>Log out</button>
             </li>
           </ul>
