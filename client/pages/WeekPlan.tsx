@@ -155,9 +155,6 @@ export default function WeekPlan() {
         <h1 className="mb-14 flex justify-center text-5xl text-headingGreen">
           Your week
         </h1>
-        <Link to="recipes">
-          <Button>Make a New Plan</Button>
-        </Link>
       </div>
       <div className="dropdown relative flex">
         <div onClick={toggleDropdown} className="mt-5">
@@ -185,11 +182,16 @@ export default function WeekPlan() {
             ))}
           </ul>
         )}
-
-        <Link to={`shopping/${weekId}`}>
-          <Button className="ml-20 mt-5">Shopping List</Button>
-        </Link>
+        <div className=" flex justify-items-center">
+          <Link to={`shopping/${weekId}`}>
+            <Button className="ml-20 mt-5">Shopping List</Button>
+          </Link>
+          <Link to="recipes">
+            <Button className="ml-5 mt-5">Make a New Plan</Button>
+          </Link>
+        </div>
       </div>
+
       <div className="flex flex-col items-center justify-center">
         <div className="mb-20">
           <div className="flex flex-wrap justify-center">
