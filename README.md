@@ -2,7 +2,7 @@
 
 
 # MealEasy
-
+![logo]()
 An application to help make meal planning easier!
 
 ## User Story
@@ -30,6 +30,7 @@ An application to help make meal planning easier!
 * Auth0
 * Tailwind
 * DaisyUi
+* Typescript
 
 ## Backend Setup
 * Express.js
@@ -37,7 +38,15 @@ An application to help make meal planning easier!
 * sqlite3
 * External API to grab the initial recipes
   [edmam](https://www.edamam.com/)
+* Typescript
 
+## Challenges
+
+The biggest challenge was storing the data from the external api using sqlite. This was due to the data being in object form. We would like to look into changing the database to either PostgreSQL or MongoDB. 
+
+## The future
+
+We are looking at deploying onto a cloud platform such as AWS or Azure.
 
   
 
