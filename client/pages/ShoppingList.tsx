@@ -56,7 +56,7 @@ function ShoppingList() {
       (
         <>
           <div className="relative flex flex-col items-center justify-center">
-            <h1 className="mb-14 flex justify-center text-5xl text-headingGreen">
+            <h1 className="mb-14 flex justify-center text-center text-4xl text-headingGreen sm:text-3xl md:text-5xl">
               Your Shopping List
             </h1>
           </div>

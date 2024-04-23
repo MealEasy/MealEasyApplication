@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import RecipeDetail from '../components/RecipeDetailCard'
 import Button from '../components/Button'
-
 import useGetUserById from '../hooks/useGetUserById'
 import { useAuth0 } from '@auth0/auth0-react'
 import { addUser } from '../apis/backend-apis/users'
 import useGetWeekById from '../hooks/useGetWeeks'
 import { getRecipeById } from '../apis/backend-apis/recipes'
 import useGetWeeksByUser from '../hooks/useGetWeeksByUsers'
-
 import { updateWeek } from '../apis/backend-apis/weeks'
 
 export default function WeekPlan() {
@@ -27,17 +25,13 @@ export default function WeekPlan() {
   const [mealPlan, setMealPlan] = useState({})
   const [selectedRecipeIndex, setSelectedRecipeIndex] = useState(null)
   const [recipes, setRecipes] = useState([])
-  const [selectedRecipe, setSelectedRecipe] = useState(null)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [weekId, setweekId] = useState(2)
   const [weekPlan, setweekPlan] = useState([])
-  // const [shopping, setShopping] = useState(1)
   const { user } = useAuth0()
   const auth = user?.sub
-  // const userId = auth ?? '-1'
 
   const weeksArr = weekPlan?.map((item) => item.id)
-
   const { data: week } = useGetWeekById(weekId)
   const { data: userWeeks } = useGetWeeksByUser(auth)
 
@@ -117,15 +111,12 @@ export default function WeekPlan() {
     e.preventDefault()
   }
 
-  function renderRecipe(id: number) {
+  function renderRecipe(id) {
     setweekId(id)
     setIsDropdownOpen(false)
     setShopping(id)
   }
 
-  // Add user
-  // const { user } = useAuth0()
-  // const auth = user?.sub
   const { data, isLoading, isError } = useGetUserById(auth)
 
   useEffect(() => {
@@ -150,74 +141,66 @@ export default function WeekPlan() {
   }
 
   return (
-    <div>
-      <div className="relative flex flex-col items-center justify-center">
-        <h1 className="mb-14 flex justify-center text-5xl text-headingGreen">
-          Your week
-        </h1>
+    <div className="flex flex-col items-center">
+      <div className="relative">
+        <h1 className="my-14 text-5xl text-headingGreen">Your week</h1>
         <Link to="recipes">
           <Button>Make a New Plan</Button>
         </Link>
       </div>
-      <div className="dropdown relative flex">
+      <div className="dropdown relative">
         <div onClick={toggleDropdown} className="mt-5">
           <button className="btn bg-transparent text-buttonGreen hover:bg-buttonGreen hover:text-white focus:bg-buttonGreen focus:text-white">
             Select your week
           </button>
         </div>
+        {/* Dropdown menu */}
         {isDropdownOpen && (
-          <ul
-            tabIndex={0}
-            className=" right-100 menu dropdown-content menu-md absolute z-[2] mt-3 w-52 rounded-box bg-base-100 p-2 font-bold text-buttonGreen shadow"
-          >
+          <ul className="dropdown-menu">
+            {/* Dropdown items */}
             {weeksArr.map((week, index) => (
-              <>
-                <li
-                  key={week}
-                  className="hover:rounded-lg hover:bg-buttonGreen hover:text-white"
-                >
-                  <button
-                    onClick={() => renderRecipe(week)}
-                    className="focus:text-white"
-                  >{`Week ${index + 1}`}</button>
-                </li>
-              </>
+              <li key={week}>
+                <button
+                  onClick={() => renderRecipe(week)}
+                  className="block w-full px-4 py-2 text-left text-sm hover:bg-gray-200 focus:bg-gray-200"
+                >{`Week ${index + 1}`}</button>
+              </li>
             ))}
           </ul>
         )}
-
+        {/* Shopping list button */}
         <Link to={`shopping/${weekId}`}>
           <Button className="ml-20 mt-5">Shopping List</Button>
         </Link>
       </div>
-
       <div className="mb-20 flex">
-        <div>
-          <div className="ml-12 flex flex-col items-start">
-            {daysOfWeek.map((day, index) => (
-              <div key={index} className="mt-5 h-32">
-                <h2 className="mb-1 text-xl font-semibold text-headingGreen">
-                  {day}
-                </h2>
-
-                <div
-                  className="hover:po card card-side h-24 w-96 cursor-pointer bg-white shadow-sm hover:shadow-md hover:shadow-buttonGreen"
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, day)}
-                  onDrop={(e) => handleDrop(e, day, week)}
-                  onDragOver={handleDragOver}
-                  onClick={() => handleRecipeClick(index)}
-                >
-                  <div className="m-auto flex">
-                    <h2 className="card-title text-lg font-semibold">
-                      {recipes[index]?.name || 'No Recipe'}
-                    </h2>
-                  </div>
+        {/* Days column */}
+        <div className="ml-12 flex flex-col">
+          {daysOfWeek.map((day, index) => (
+            <div key={index} className="mt-5">
+              {/* Day label */}
+              <h2 className="mb-1 text-xl font-semibold text-headingGreen">
+                {day}
+              </h2>
+              {/* Recipe card */}
+              <div
+                className="hover:po card card-side h-24 w-96 cursor-pointer bg-white shadow-sm hover:shadow-md hover:shadow-buttonGreen"
+                draggable
+                onDragStart={(e) => handleDragStart(e, day)}
+                onDrop={(e) => handleDrop(e, day, week)}
+                onDragOver={handleDragOver}
+                onClick={() => handleRecipeClick(index)}
+              >
+                <div className="m-auto">
+                  <h2 className="card-title text-lg font-semibold">
+                    {recipes[index]?.name || 'No Recipe'}
+                  </h2>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
+        {/* Recipe detail */}
         <div className="ml-40 mt-12">
           {selectedRecipeIndex !== null &&
             recipes[selectedRecipeIndex] !== null && (
@@ -228,12 +211,6 @@ export default function WeekPlan() {
                   '_',
                 )}
               />
-              // <iframe
-              //   title="recipe-window"
-              //   width="700"
-              //   height="1000"
-              //   src={recipes[selectedRecipeIndex]?.url}
-              // ></iframe>
             )}
         </div>
       </div>

@@ -175,7 +175,9 @@ export default function RecipeCardMedium() {
       <>
         <div className="relative flex flex-col items-center justify-center">
           <div className="mb-5 flex justify-center text-5xl">
-            <h2 className="text-headingGreen">Pick Your Meals</h2>
+            <h1 className="mb-14 flex justify-center text-center text-4xl text-headingGreen sm:text-3xl md:text-5xl">
+              Pick Your Meals
+            </h1>
           </div>
           <div className="mb-10 mt-2 flex justify-center">
             <h3>Choose up to seven meals</h3>
@@ -184,10 +186,7 @@ export default function RecipeCardMedium() {
           <label className=" mb-5 flex items-center gap-2">
             <input
               onChange={handleChange}
-
-
               onKeyDown={handleKeyPress}
-
               className="mt-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 focus:border-buttonGreen focus:outline-none"
               placeholder="Search"
               value={input}
