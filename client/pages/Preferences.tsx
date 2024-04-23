@@ -1,11 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { addUser } from '../apis/backend-apis/users'
 import { User } from '../../models/users'
-
 import { SetStateAction, useEffect, useState } from 'react'
 import { Preferences as Preferencetype } from '../../models/preferences'
 import { UserPreferences } from '../../models/userPreferences'
-
 import {
   addUserPreferences,
   delUserPreferences,
@@ -59,7 +57,7 @@ function Preferences() {
   }, [currentUser, isAuthenticated, preferences, user])
 
   if (isLoading) {
-    return <p>Retreiving your data</p>
+    return <p>Retrieving your data</p>
   }
 
   if (isError) {
@@ -130,29 +128,27 @@ function Preferences() {
     return (
       <>
         <div className="mt-5">
-          {/* relative flex flex-col items-center justify-center */}
-          {/* flex justify-center text-4xl */}
-          <div className="relative flex flex-col items-center justify-center ">
-            <h1 className="mb-14 flex justify-center text-5xl text-headingGreen">
-              Preferences
-            </h1>
+          <div className="flex flex-col items-center">
+            <h1 className="mb-14 text-5xl text-headingGreen">Preferences</h1>
           </div>
 
           <div>
             <ul className="ml-10">
               {typesArr.map((item) => (
-                <li key={item}>
-                  <h3 className="mb-5 mt-8 text-2xl font-semibold text-headingGreen">
+                <li key={item} className="mt-8">
+                  <h3 className="mb-5 text-2xl font-semibold text-headingGreen">
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                   </h3>
                   <div className="container max-w-md">
-                    <ul className="ml-5 grid grid-cols-3 gap-10">
+                    <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                       {preferences.map((pref) =>
                         pref.type === item ? (
                           <li key={pref.name}>
                             <button
                               onClick={() => handleClick(pref)}
-                              className={` ${btncolor[pref.name]} w-32`}
+                              className={`${
+                                btncolor[pref.name]
+                              } w-full sm:w-auto md:w-32`}
                             >
                               {pref.name.charAt(0).toUpperCase() +
                                 pref.name.slice(1)}
@@ -166,8 +162,8 @@ function Preferences() {
               ))}
             </ul>
           </div>
-          <div className="ml-28 w-2/5">
-            <Button onClick={handleSave} className="ml-24 mt-10 w-40">
+          <div className="mt-10 flex justify-center">
+            <Button onClick={handleSave} className="w-40">
               Save
             </Button>
           </div>
