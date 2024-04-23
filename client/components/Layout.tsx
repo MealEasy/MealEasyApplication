@@ -6,8 +6,8 @@ export default function Layout() {
   return (
     <div className="layout-body flex min-h-screen flex-col">
       <Header />
-      <div className="flex flex-grow justify-center">
-        <div className="w-full max-w-screen-2xl px-4">
+      <div className="flex flex-grow items-center justify-center">
+        <div className="max-w-screen-2xl px-4">
           <Outlet />
         </div>
       </div>

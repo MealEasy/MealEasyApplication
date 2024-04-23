@@ -8,6 +8,8 @@
 
 .layout-body {
   background-color: #f8fdf0;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-bg-color {
@@ -16,4 +18,8 @@
 
 body {
   font-family: 'Raleway', sans-serif;
+}
+
+.flex-gro.flex-grow {
+  flex-grow: 1;
 }
