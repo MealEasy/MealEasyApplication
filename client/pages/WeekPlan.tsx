@@ -220,26 +220,34 @@ export default function WeekPlan() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        <div className="mt-12" style={{ minWidth: '250px', maxWidth: '500px' }}>
-          {selectedRecipeIndex !== null &&
-            recipes[selectedRecipeIndex] !== null && (
-              <RecipeDetail
-                imageUrl={recipes[selectedRecipeIndex]?.image}
-                recipeName={recipes[selectedRecipeIndex]?.name}
-                ingredients={recipes[selectedRecipeIndex]?.ingredients.split(
-                  '_',
+            <div
+              className="mt-12"
+              style={{
+                minWidth: '250px',
+                maxWidth: '500px',
+                marginLeft: '20px',
+                height: '300px',
+                width: '300px',
+              }}
+            >
+              {selectedRecipeIndex !== null &&
+                recipes[selectedRecipeIndex] !== null && (
+                  <RecipeDetail
+                    imageUrl={recipes[selectedRecipeIndex]?.image}
+                    recipeName={recipes[selectedRecipeIndex]?.name}
+                    ingredients={recipes[
+                      selectedRecipeIndex
+                    ]?.ingredients.split('_')}
+                  />
+                  // <iframe
+                  //   title="recipe-window"
+                  //   width="700"
+                  //   height="1000"
+                  //   src={recipes[selectedRecipeIndex]?.url}
+                  // ></iframe>
                 )}
-              />
-              // <iframe
-              //   title="recipe-window"
-              //   width="700"
-              //   height="1000"
-              //   src={recipes[selectedRecipeIndex]?.url}
-              // ></iframe>
-            )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
