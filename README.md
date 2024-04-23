@@ -29,6 +29,12 @@ An application to help make meal planning easier!
 
  [Wireframes](https://miro.com/app/board/uXjVNFoiRjA=/?share_link_id=804098580911)
  
+ Before moving to an organisation we set up a project on our previous repo.
+ * Setting up issues for each step- tagging FE and BE
+ * Assigned Agile roles
+ * Code reviewed before merging to main
+   
+ 
 ## Frontend Setup
 * React.js
 * Auth0
