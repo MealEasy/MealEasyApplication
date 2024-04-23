@@ -190,35 +190,40 @@ export default function WeekPlan() {
           <Button className="ml-20 mt-5">Shopping List</Button>
         </Link>
       </div>
+      <div className="flex flex-col items-center justify-center">
+        <div className="mb-20">
+          <div className="flex flex-wrap justify-center">
+            <div
+              className="flex flex-col items-start"
+              style={{ minWidth: '250px', maxWidth: '500px' }}
+            >
+              {daysOfWeek.map((day, index) => (
+                <div key={index} className="mt-5 h-32">
+                  <h2 className="mb-1 text-xl font-semibold text-headingGreen">
+                    {day}
+                  </h2>
 
-      <div className="mb-20 flex">
-        <div>
-          <div className="ml-12 flex flex-col items-start">
-            {daysOfWeek.map((day, index) => (
-              <div key={index} className="mt-5 h-32">
-                <h2 className="mb-1 text-xl font-semibold text-headingGreen">
-                  {day}
-                </h2>
-
-                <div
-                  className="hover:po card card-side h-24 w-96 cursor-pointer bg-white shadow-sm hover:shadow-md hover:shadow-buttonGreen"
-                  draggable
-                  onDragStart={(e) => handleDragStart(e, day)}
-                  onDrop={(e) => handleDrop(e, day, week)}
-                  onDragOver={handleDragOver}
-                  onClick={() => handleRecipeClick(index)}
-                >
-                  <div className="m-auto flex">
-                    <h2 className="card-title text-lg font-semibold">
-                      {recipes[index]?.name || 'No Recipe'}
-                    </h2>
+                  <div
+                    className="hover:po card card-side h-24 w-96 cursor-pointer bg-white shadow-sm hover:shadow-md hover:shadow-buttonGreen"
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, day)}
+                    onDrop={(e) => handleDrop(e, day, week)}
+                    onDragOver={handleDragOver}
+                    onClick={() => handleRecipeClick(index)}
+                  >
+                    <div className="m-auto flex">
+                      <h2 className="card-title text-lg font-semibold">
+                        {recipes[index]?.name || 'No Recipe'}
+                      </h2>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-        <div className="ml-40 mt-12">
+
+        <div className="mt-12" style={{ minWidth: '250px', maxWidth: '500px' }}>
           {selectedRecipeIndex !== null &&
             recipes[selectedRecipeIndex] !== null && (
               <RecipeDetail
