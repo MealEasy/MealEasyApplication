@@ -40,9 +40,10 @@ function Profile() {
   if (data)
     return (
       <div>
-        <h1 className="mb-14 flex justify-center text-5xl text-headingGreen">
+        <h1 className="mb-14 flex justify-center text-center text-4xl text-headingGreen sm:text-3xl md:text-5xl">
           Welcome {data.nickname}
         </h1>
+
         <div className="mt-5">
           <h2 className="mb-5 ml-10 text-2xl font-semibold text-headingGreen">
             My Personal Details

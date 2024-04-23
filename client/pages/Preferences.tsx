@@ -127,9 +127,11 @@ function Preferences() {
 
     return (
       <>
-        <div className="mt-5">
+        <div className="">
           <div className="flex flex-col items-center">
-            <h1 className="mb-14 text-5xl text-headingGreen">Preferences</h1>
+            <h1 className="mb-14 flex justify-center text-center text-4xl text-headingGreen sm:text-3xl md:text-5xl">
+              Preferences
+            </h1>
           </div>
 
           <div>
